@@ -66,6 +66,7 @@ const Suggestion = styled.div`
   background-size: cover;
   background-position: center center;
 `;
+
 function Detail() {
   const { id } = useParams(); // App.js의 Route ':id'값을 가져온다
   const { loading, data } = useQuery(GET_MOVIE, {

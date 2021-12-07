@@ -52,6 +52,7 @@ const GET_MOVIES = gql`
     }
   }
 `; // graphql에 불러올 데이터들을 설정한다, isLiked는 백엔드에 등록이 안되어있어 teleGraphql을 이용하여 isLiked가 apollo.js의 client에 있다고 알린다
+
 function Home() {
   const { loading, data } = useQuery(GET_MOVIES); // 설정한 데이터들을 호출
   return (

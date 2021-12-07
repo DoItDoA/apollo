@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { gql, useMutation } from "@apollo/client";
 
-const LIKE_MOVIE = gql`
-  mutation toggleMovie($id: Int!, $isLiked: Boolean!) {
-    toggleLikeMovie(id: $id, isLiked: $isLiked) @client
-  }
-`;
-
 const Container = styled.div`
   height: 380px;
   width: 100%;
@@ -24,9 +18,18 @@ const Poster = styled.div`
   background-position: center center;
 `;
 
+const LIKE_MOVIE = gql`
+  mutation toggleMovie($id: Int!, $isLiked: Boolean!) {
+    toggleLikeMovie(id: $id, isLiked: $isLiked) @client
+  }
+`;
+
 function Movie({ id, bg, isLiked }) {
   const [toggleLikeMovie] = useMutation(LIKE_MOVIE, {
-    variables: { id: parseInt(id), isLiked },
+    variables: {
+      id: parseInt(id),
+      isLiked,
+    },
   }); // useMutation을 이용하여 위의 mutation실행
 
   return (
